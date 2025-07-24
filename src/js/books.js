@@ -44,7 +44,7 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 		const vQuery = refs.currentCat === refs.ALL_CATEGORIES ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
 
-		let mkData = [];
+		let mkData, sourseData = [];
 
 		if (!dataBook?.data?.length) {
 			throw new apiRest.ErrorService({
@@ -55,12 +55,14 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 		}
 
 		if (refs.currentCat === refs.ALL_CATEGORIES) {
-			mkData = dataBook.data
+			sourseData = dataBook.data
 				.map(category => category.books)
 				.reduce((acc, books) => acc.concat(books), []);
 		} else {
-			mkData = dataBook.data;
+			sourseData = dataBook.data;
 		}
+
+		mkData = [...new Map(sourseData.map(el => [`${el.title?.trim().toLowerCase()}|${el.author?.trim().toLowerCase()}`, el])).values()];
 
 		storage.StorageService.add(refs.BOOK_LIST, mkData);
 
@@ -217,7 +219,7 @@ books_more_btn.addEventListener("click", async () => {
 	if (!mkData.length) {
 
 		//тост 
-		render.showMessage("Дані не вдалося дозавантажити. Спробуйте ще раз...", "Помилка!!!", "red");
+		render.showMessage("Data is unavailable. Please, try later", "Error!!!", "red");
 		renderBooksByCat(refs.currentCat, true);
 		showMoreCloseOperations();
 		render.scrollToTop();

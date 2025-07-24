@@ -194,9 +194,9 @@ export function markUpCartBookList(data) {
 								</div>
 							</div>
 								<div class="cart-item-meta">
-									<span class="cart-item-price">Ціна: $${price}</span>
-									<span class="cart-item-qty"> Кількість: ${qty}</span>
-									<span class="cart-item-total">Разом: $${(price * qty).toFixed(2)}</span>
+									<span class="cart-item-price">Price: $${price}</span>
+									<span class="cart-item-qty"> Q-ty: ${qty}</span>
+									<span class="cart-item-total">Total: $${(price * qty).toFixed(2)}</span>
 									
 								</div>
 								<button class="cart-item-btn secondary-button">remove from cart</button>

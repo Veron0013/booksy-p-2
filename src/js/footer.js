@@ -1,5 +1,6 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import * as render from '/js/render-function';
+//import iziToast from 'izitoast';
+//import 'izitoast/dist/css/iziToast.min.css';
 
 const footerForm = document.querySelector('.footer-form');
 const footerInput = footerForm?.querySelector('.footer-input');
@@ -12,12 +13,7 @@ if (footerForm) {
       return;
     }
     setTimeout(() => {
-      iziToast.success({
-        title: 'Дякуємо!',
-        message: 'Ви успішно підписались',
-        position: 'topRight',
-        class: 'custom-toast',
-      });
+      render.showMessage(`You subscribed successfully`, "Thank you");
       footerForm.reset();
     }, 500);
   });

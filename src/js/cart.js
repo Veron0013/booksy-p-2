@@ -136,7 +136,7 @@ document.addEventListener('keydown', e => {
 
 buy_now.addEventListener('click', e => {
   localStorage.removeItem(refs.BOOK_CARD_LIST);
-  render.showMessage('Гарний вибір', 'Дякуємо за покупку!');
+  render.showMessage('Good choise', 'Thanks for your purchase!');
   closeModal();
   storage.StorageService.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
 });

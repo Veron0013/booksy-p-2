@@ -81,7 +81,7 @@ export async function openModal(bookId) {
       submitBuyNow.addEventListener("submit", (e) => {
         e.preventDefault();
         e.currentTarget.blur();
-        render.showMessage("Гарний вибір", "Дякуємо за покупку!");
+        render.showMessage('Good choise', 'Thanks for your purchase!');
         storage.StorageService.removeItemFromStorage(bookId);
         closeModal();
       });
@@ -135,7 +135,7 @@ export async function openModal(bookId) {
 
 function handleAddToCard(qty, data) {
   storage.StorageService.addToCard(refs.BOOK_CARD_LIST, data._id, data.price, qty);
-  render.showMessage(`У кошику ${qty} од. книжок ${data.title}`, "Кошик");
+  render.showMessage(`In cart ${qty} books ${data.title}`, "Cart");
 };
 
 function closeModal() {

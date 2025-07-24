@@ -1,5 +1,6 @@
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import * as render from '/js/render-function';
+//import iziToast from 'izitoast';
+//import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
@@ -73,23 +74,16 @@ function handleSubmit(event) {
   });
 
   if (isValid) {
-    console.log('Форма валідна. Можна відправити.');
-
     const formData = {
       fullname: form.elements.fullname.value.trim(),
       email: form.elements.email.value.trim(),
       comment: form.elements.comment.value.trim(),
     };
 
-    console.log('Дані для відправки:', formData);
+    //console.log('Дані для відправки:', formData);
 
     setTimeout(() => {
-      iziToast.success({
-        title: 'Дякуємо!',
-        message: `Ви успішно зареєструвалися на ${eventName}`,
-        position: 'topRight',
-        class: 'custom-toast',
-      });
+      render.showMessage(`You successfully registered on event ${eventName}`, "Thank you");
       form.reset();
       closeModal();
     }, 500);
