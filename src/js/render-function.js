@@ -32,6 +32,17 @@ export async function createMarcup(
 	element.insertAdjacentHTML('beforeend', callBack(data));
 }
 
+export function showMessage(message, title, color = "green") {
+	setTimeout(() => {
+		iziToast.success({
+			title,
+			message,
+			color,
+			position: 'topRight',
+			class: 'custom-toast'
+		});
+	}, 300);
+}
 //наповнювачі
 export function markUpBooks(data) {
 	const mkData = data
@@ -174,7 +185,6 @@ export function markUpBooksById({
 			</div>
 		</div>`
 };
-
 export function markUpCartBookList(data) {
 	const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
 
@@ -208,14 +218,4 @@ export function markUpCartBookList(data) {
 	return mkData;
 }
 
-export function showMessage(message, title, color = "green") {
-	setTimeout(() => {
-		iziToast.success({
-			title,
-			message,
-			color,
-			position: 'topRight',
-			class: 'custom-toast'
-		});
-	}, 300);
-}
+

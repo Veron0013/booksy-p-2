@@ -63,6 +63,10 @@
     border: none;
 }
 
+.article-wrap {
+    border-right: 0.1em solid var(--color-main-black);
+}
+
 /*! TABLET (≥768px) */
 @media (min-width: 768px) and (max-width: 1439px) {
     .article .container {

@@ -5,6 +5,8 @@ export default {
 	END_TOP_BOOKS: "/books/top-books",
 	END_CATEGORIE_ID: "/books/category?category=",
 	END_BOOK_ID: "/books/",
+	QUOTES_URL: "https://api.api-ninjas.com/v1/quotes",
+	QUOTES_API_KEY: import.meta.env.VITE_Q_API_KEY,
 	//error types
 	API_ERROR: "ApiError",
 	NO_BOOKS: "NoBooks",
